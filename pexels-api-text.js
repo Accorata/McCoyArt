@@ -24,10 +24,17 @@ async function images(query) {
 }
 
 async function run() {
+  try {
+    await images("lake");
+    console.log(image_url);
+    let response = await fetch(image_url);
+    let img = await response.json();
+    console.log(img);
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
 
-  await images("lake");
-  console.log(image_url);
-  let response = await fetch(image_url);
 }
 
 run();
