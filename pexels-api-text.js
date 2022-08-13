@@ -1,4 +1,3 @@
-//wrap everything in an async function?
 import {
   createClient
 } from 'pexels';
@@ -16,12 +15,17 @@ async function images(query) {
     });
     let photo = data.photos[0];
     let src = photo.src;
-    image = "abc";//src.landscape;
-    console.log(image);
+    image = src.landscape;
   } catch (error) {
     console.log(error);
+    throw new Error();
   }
 }
 
-await images("lake");
-console.log(image);
+async function run() {
+
+  await images("lake");
+  console.log(image);
+}
+
+run();
