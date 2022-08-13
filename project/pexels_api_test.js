@@ -1,3 +1,8 @@
+import {
+  createClient
+} from '/node_modules/pexels';
+//import fetch from '/node_modules/node-fetch';
+
 const api_key = '563492ad6f917000010000015a0408d31033415caf82c979840d22bc';
 const client = createClient(api_key);
 //const query = 'Nature';
@@ -19,20 +24,30 @@ async function images(query) {
 }
 
 let run = async function() {
-  import {
-    createClient
-  } from 'pexels';
-  import fetch from "node-fetch";
   try {
-    let img = document.getElementById('img');
     await images("lake");
-    img.src = image_url.message;
-    console.log(image_url);
+    let img_data = await fetch (image_url);
+    const img_bitmap = await createImageBitmap(img_data);
+    img_bitmap.drawImage();
+    img_bitmap.canvas();
+    //console.log(image_url);
   } catch (error) {
     console.log(error);
     throw new Error();
   }
 }
+
+// let run = async function() {
+//   try {
+//     let img = document.getElementById('img');
+//     await images("lake");
+//     img.src = image_url.message;
+//     console.log(image_url);
+//   } catch (error) {
+//     console.log(error);
+//     throw new Error();
+//   }
+// }
 
 let button_setup = function() {
   const button = document.getElementById('button');
