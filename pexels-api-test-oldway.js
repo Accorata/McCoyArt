@@ -18,7 +18,7 @@ async function images(query) {
         }
       });
     let data = await response.json();
-    console.log(data);
+    console.log(data.photos);
 }
 
 images("lake");
