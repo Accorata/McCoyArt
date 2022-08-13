@@ -1,8 +1,3 @@
-import {
-  createClient
-} from 'pexels';
-import fetch from "node-fetch";
-
 const api_key = '563492ad6f917000010000015a0408d31033415caf82c979840d22bc';
 const client = createClient(api_key);
 //const query = 'Nature';
@@ -23,18 +18,25 @@ async function images(query) {
   }
 }
 
-async function run() {
+let run = async function() {
+  import {
+    createClient
+  } from 'pexels';
+  import fetch from "node-fetch";
   try {
+    let img = document.getElementById('img');
     await images("lake");
+    img.src = image_url.message;
     console.log(image_url);
-    let response = await fetch(image_url);
-    let img = await response.json();
-    console.log(img);
   } catch (error) {
     console.log(error);
     throw new Error();
   }
-
 }
 
-run();
+let button_setup = function() {
+  const button = document.getElementById('button');
+  button.onclick = run;
+}
+
+window.addEventListener('DOMContentLoaded', button_setup);
