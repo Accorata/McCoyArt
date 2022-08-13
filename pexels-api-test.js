@@ -8,6 +8,8 @@
 
 const api_key = '563492ad6f917000010000015a0408d31033415caf82c979840d22bc';
 
+import fetch from "node-fetch";
+
 fetch("https://api.pexels.com/v1/search?query=people",{
   headers: {
     Authorization: api_key
