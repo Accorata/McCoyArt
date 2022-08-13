@@ -1,7 +1,24 @@
-import { createClient } from 'pexels';
+// import { createClient } from 'pexels';
+//
+// //const api_key = '563492ad6f917000010000015a0408d31033415caf82c979840d22bc';
+// const client = createClient('563492ad6f917000010000015a0408d31033415caf82c979840d22bc');
+// const query = 'Nature';
+// //
+// // client.photos.search({ query, per_page: 1 })
 
-const api_key = '563492ad6f917000010000015a0408d31033415caf82c979840d22bc'
-const client = createClient(api_key);
-const query = 'Nature';
+const api_key = '563492ad6f917000010000015a0408d31033415caf82c979840d22bc';
 
-client.photos.search({ query, per_page: 1 })
+fetch("https://api.pexels.com/v1/search?query=people",{
+  headers: {
+    Authorization: api_key
+  }
+})
+   .then(resp => {
+     return resp.json()
+   })
+   .then(data => {
+     console.log(data)
+   })
+   .catch(resp => {
+     console.log("Fail")
+   })
