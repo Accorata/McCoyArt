@@ -1,7 +1,9 @@
-import {
-  createClient
-} from '/node_modules/pexels';
-//import fetch from '/node_modules/node-fetch';
+// import {
+//   createClient
+// } from '/node_modules/pexels';
+// const { createClient } = require('pexels');
+// const fetch = require('node-fetch');
+import fetch from './node-fetch';
 
 const api_key = '563492ad6f917000010000015a0408d31033415caf82c979840d22bc';
 const client = createClient(api_key);
@@ -26,7 +28,8 @@ async function images(query) {
 let run = async function() {
   try {
     await images("lake");
-    let img_data = await fetch (image_url);
+    let img_dat = await fetch (image_url);
+    let img_data = await img_dat.blob();
     const img_bitmap = await createImageBitmap(img_data);
     img_bitmap.drawImage();
     img_bitmap.canvas();
