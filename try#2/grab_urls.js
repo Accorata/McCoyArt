@@ -1,7 +1,7 @@
-import {
-  createClient
-} from '/node_modules/pexels';
-import fetch from './node-fetch';
+// import {
+//   createClient
+// } from './node_modules/pexels/dist/createClient.d.ts';
+import fetch from './node_modules/node-fetch/lib/index.js';
 
 const api_key = '563492ad6f917000010000015a0408d31033415caf82c979840d22bc';
 const client = createClient(api_key);
