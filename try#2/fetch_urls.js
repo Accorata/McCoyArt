@@ -17,7 +17,9 @@ async function images(query) {
     // let photo_num = random(100);
     let photo = await d_json.photos[0];
     let image_url = photo.src.landscape;
-    console.log(image_url);
+    //console.log(image_url);
+    //console.log('"'+image_url+'"');
+    return image_url;
   } catch (error) {
     console.log(error);
     throw new Error();
