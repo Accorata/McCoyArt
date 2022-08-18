@@ -1,12 +1,11 @@
 #! /usr/bin/env bash
 
 function save_image() {
-  curl --url "$1" -o test3.jpeg
+  while read data;
+  do curl --url "$data" -o test3.jpeg;
+  done;
 }
 
-node fetch_urls.js | echo
-#save_image
-# node grab_urls.js
+node fetch_urls.js | save_image
+
 echo "abc"
-# node grab_urls.js
-# |> echo ""
