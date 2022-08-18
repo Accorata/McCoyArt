@@ -1,9 +1,9 @@
 import fetch from './node_modules/node-fetch/lib/index.js';
 
 const api_key = '563492ad6f917000010000015a0408d31033415caf82c979840d22bc';
-const query = 'Sea';
+const urls = [];
 
-async function images(query) {
+async function retrieve_image_url(query) {
   try {
     let page = Math.floor(Math.random() * 10) + 1;
     let data = await fetch(`https://api.pexels.com/v1/search?query=${query}&page=${page}`, {
@@ -16,8 +16,7 @@ async function images(query) {
     let d_json = await data.json();
     let photo_num = Math.floor(Math.random() * 15);
     let photo = await d_json.photos[photo_num];
-    let image_url = photo.src.landscape;
-    console.log(image_url);
+    urls.push(photo.src.landscape);
     //console.log('"'+image_url+'"');
     //return image_url;
   } catch (error) {
@@ -26,4 +25,12 @@ async function images(query) {
   }
 }
 
-images(query);
+async function retrieve_urls() {
+  await retrieve_image_url("sunset");
+  await retrieve_image_url("sky");
+  await retrieve_image_url("sea");
+  await retrieve_image_url("landscape");
+  console.log(urls);
+}
+
+retrieve_urls();
