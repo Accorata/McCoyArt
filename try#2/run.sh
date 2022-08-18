@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
-file_name="sea.jpeg"
+queries=("sunset" "sky" "sea" "landscape")
+file_name=""
 
 function save_image() {
   while read data;
@@ -8,8 +9,23 @@ function save_image() {
   done;
 }
 
-node fetch_urls.js | save_image
+function save_images() {
+  for q in ${queries[@]};
+    do file_name="${q}.jpeg"
+    node fetch_urls.js ${q} | save_image;
+  done;
+}
+# file_name="sea.jpeg"
+# node fetch_urls.js sea | save_image
+# file_name="sea.jpeg"
+# node fetch_urls.js sea | save_image
+# file_name="sea.jpeg"
+# node fetch_urls.js sea | save_image
+# file_name="sea.jpeg"
+# node fetch_urls.js sea | save_image
+save_images
 
+echo "done"
 #one=(1 2 3 4)
 # function save_images() {
 #
@@ -31,7 +47,7 @@ node fetch_urls.js | save_image
 #
 # split ${one}
 
-echo "done"
+
 
 
 
