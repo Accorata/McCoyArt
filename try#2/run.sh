@@ -1,8 +1,10 @@
 #! /usr/bin/env bash
 
+file_name="test3"
+
 function save_image() {
   while read data;
-  do curl --url "$data" -o test3.jpeg;
+  do curl --url "${data}" -o "${file_name}.jpeg";
   done;
 }
 
