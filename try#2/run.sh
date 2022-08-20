@@ -16,8 +16,7 @@ function save_images() {
   done;
 }
 
-# Don't need this while running p5 if I have images
-# save_images
+save_images
 
 p5 run p5_code.js
 # http://localhost:4444
