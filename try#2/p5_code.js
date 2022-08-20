@@ -7,7 +7,8 @@ function preload() {
   land_img = loadImage("images/landscape.jpeg");
   sun_img = loadImage("images/sunset.jpeg");
   remove_top_mask = loadImage("masks/remove_top.png");
-  land_mask = loadImage("masks/mask1.png");
+  let mask_number = int(random()*10);
+  land_mask = loadImage("masks/generated/random_mask_"+mask_number+".png");
 }
 
 function setup () {
