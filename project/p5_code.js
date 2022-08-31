@@ -19,7 +19,7 @@ function setup() {
   let centerX = random(radius, width - radius);
   let centerY = random(radius, height / 2 - radius);
 
-  fill(0);
+  circle_mask.fill(0);
   circle_mask.ellipse(centerX, centerY, radius, radius);
 
   image(sky_img, 0, 0);
@@ -30,8 +30,12 @@ function setup() {
   land_img.mask(land_mask);
   image(land_img, 0, 0);
 
-  let masked;
-  (masked = sun_img.get()).mask(circle_mask);
+  let sun_graphics = createGraphics(width, height);
+  sun_graphics.image(sun_img, 0, 0);
+  (masked = sun_graphics.get()).mask(circle_mask);
   //sun_img.mask(circle_mask);
-  image(sun_image, 0, 0);
+  //image(sun_img, 0, 0);
+  background(0);
+  // image(circle_mask, 0, 0);
+  // image(sun_graphics, 0, 0);
 }
