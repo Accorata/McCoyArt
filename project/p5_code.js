@@ -1,6 +1,5 @@
 let sky_img, sea_img, land_img, sun_img;
 let remove_top_mask, land_mask;
-let sun_graphics;
 
 function preload() {
   sky_img = loadImage("images/sky.jpeg");
@@ -23,7 +22,7 @@ function setup() {
   land_img.mask(land_mask);
   image(land_img, 0, 0);
 
-  sun_graphics = createGraphics(width, height);
+  let sun_graphics = createGraphics(width, height);
   sun_graphics.image(sun_img, 0, 0);
 
   fill(0);
