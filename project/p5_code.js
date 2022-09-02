@@ -1,5 +1,6 @@
 let sky_img, sea_img, land_img, sun_img;
 let remove_top_mask, land_mask;
+let sun_graphics;
 
 function preload() {
   sky_img = loadImage("images/sky.jpeg");
@@ -14,14 +15,6 @@ function preload() {
 function setup() {
   createCanvas(1200, 627);
 
-  let circle_mask = createGraphics(width, height);
-  let radius = 75;
-  let centerX = random(radius, width - radius);
-  let centerY = random(radius, height / 2 - radius);
-
-  circle_mask.fill(0);
-  circle_mask.ellipse(centerX, centerY, radius, radius);
-
   image(sky_img, 0, 0);
 
   sea_img.mask(remove_top_mask);
@@ -30,12 +23,18 @@ function setup() {
   land_img.mask(land_mask);
   image(land_img, 0, 0);
 
-  let sun_graphics = createGraphics(width, height);
+  sun_graphics = createGraphics(width, height);
   sun_graphics.image(sun_img, 0, 0);
-  (masked = sun_graphics.get()).mask(circle_mask);
-  //sun_img.mask(circle_mask);
-  //image(sun_img, 0, 0);
-  background(0);
-  // image(circle_mask, 0, 0);
-  // image(sun_graphics, 0, 0);
+
+  fill(0);
+  let circle_mask = createGraphics(width, height);
+  let radius = 125;
+  let centerX = random(radius, width - radius);
+  let centerY = random(radius, height / 2 - radius);
+  circle_mask.ellipse(centerX, centerY, radius, radius);
+
+  let sun = sun_graphics.get();
+  sun.mask(circle_mask.get());
+
+  image(sun, 0, 0);
 }
