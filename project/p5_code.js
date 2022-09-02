@@ -12,18 +12,18 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1200, 627);
+  createCanvas(1200/3, 627/3);
 
-  image(sky_img, 0, 0);
+  image(sky_img, 0, 0, width, height);
 
   sea_img.mask(remove_top_mask);
-  image(sea_img, 0, 0);
+  image(sea_img, 0, 0, width, height);
 
   land_img.mask(land_mask);
-  image(land_img, 0, 0);
+  image(land_img, 0, 0, width, height);
 
   let sun_graphics = createGraphics(width, height);
-  sun_graphics.image(sun_img, 0, 0);
+  sun_graphics.image(sun_img, 0, 0, width, height);
 
   fill(0);
   let circle_mask = createGraphics(width, height);
@@ -35,5 +35,5 @@ function setup() {
   let sun = sun_graphics.get();
   sun.mask(circle_mask.get());
 
-  image(sun, 0, 0);
+  image(sun, 0, 0, width, height);
 }
